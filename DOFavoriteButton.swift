@@ -126,7 +126,7 @@ public class DOFavoriteButton: UIButton {
         circleMask = CAShapeLayer()
         circleMask.bounds = imageFrame
         circleMask.position = imgCenterPoint
-        circleMask.fillRule = kCAFillRuleEvenOdd
+        circleMask.fillRule = CAShapeLayerFillRule.evenOdd
         circleShape.mask = circleMask
 
         let maskPath = UIBezierPath(rect: imageFrame)
@@ -153,8 +153,8 @@ public class DOFavoriteButton: UIButton {
                 path.addLine(to: CGPoint.init(x: lineFrame.origin.x + lineFrame.width / 2, y: lineFrame.origin.y))
                 return path
                 }()
-            line.lineCap = kCALineCapRound
-            line.lineJoin = kCALineJoinRound
+            line.lineCap = CAShapeLayerLineCap.round
+            line.lineJoin = CAShapeLayerLineJoin.round
             line.strokeStart = 0.0
             line.strokeEnd = 0.0
             line.opacity = 0.0
@@ -343,11 +343,11 @@ public class DOFavoriteButton: UIButton {
         //===============
         // add target
         //===============
-        self.addTarget(self, action: #selector(touchDown(sender:)), for: UIControlEvents.touchDown)
-        self.addTarget(self, action: #selector(touchUpInside(sender:)), for: UIControlEvents.touchUpInside)
-        self.addTarget(self, action: #selector(touchDragExit(sender:)), for: UIControlEvents.touchDragExit)
-        self.addTarget(self, action: #selector(touchDragEnter(sender:)), for: UIControlEvents.touchDragEnter)
-        self.addTarget(self, action: #selector(touchCancel(sender:)), for: UIControlEvents.touchCancel)
+        self.addTarget(self, action: #selector(touchDown(sender:)), for: UIControl.Event.touchDown)
+        self.addTarget(self, action: #selector(touchUpInside(sender:)), for: UIControl.Event.touchUpInside)
+        self.addTarget(self, action: #selector(touchDragExit(sender:)), for: UIControl.Event.touchDragExit)
+        self.addTarget(self, action: #selector(touchDragEnter(sender:)), for: UIControl.Event.touchDragEnter)
+        self.addTarget(self, action: #selector(touchCancel(sender:)), for: UIControl.Event.touchCancel)
     }
 
     @objc func touchDown(sender: DOFavoriteButton) {
